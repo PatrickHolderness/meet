@@ -8,15 +8,15 @@ describe('<NumberOfEvents /> component', () => {
     NumberOfEventsWrapper = shallow(<NumberOfEvents />);
   });
 
-  test('render number input', () => {
+  test('render text input in number of events', () => {
     expect(NumberOfEventsWrapper.find('.number-input')).toHaveLength(1);
   });
 
-  test('render default number in the input is 32', () => {
+  test('default number is 32', () => {
     expect(NumberOfEventsWrapper.find('.number-input').prop('value')).toBe(32);
   });
 
-  test('render change the number of events in input field by changing state', () => {
+  test('change state when text input is changed', () => {
     NumberOfEventsWrapper.setState({
       numOfEvents: 32
     });
