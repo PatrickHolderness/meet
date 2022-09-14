@@ -95,8 +95,8 @@ const getToken = async (code) => {
 };
 
 export const extractLocations = (events) => {
-  var extractLocations = events.map((event) => event.location);
-  var locations = [...new Set(extractLocations)];
+  let extractLocations = events.map((event) => event.location);
+  let locations = [...new Set(extractLocations)];
   return locations;
 };
 
