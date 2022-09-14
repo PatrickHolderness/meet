@@ -25,7 +25,7 @@ export class Event extends Component {
                 rel="noreferrer"
                 className="event-htmlLink"
               >
-                See details on Google Calendar
+                View on Google Calendar
               </a>
               <p className="event-description">{event.description}</p>
             </>
@@ -35,7 +35,7 @@ export class Event extends Component {
               className="event-showDetails-btn"
               onClick={this.toggleEventDetails}
             >
-              Show Details
+               Show Details
             </button>
           ) : (
             <button
