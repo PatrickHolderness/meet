@@ -1,13 +1,14 @@
+//imports
 import { mockData } from './mock-data';
 import axios from 'axios';
-import NProgress from 'nprogress'
+import NProgress from 'nprogress';
 
 export const getAccessToken = async () => {
   const accessToken = localStorage.getItem('access_token');
 
   const tokenCheck = accessToken && (await checkToken(accessToken));
 
-if (!accessToken || tokenCheck.error) {
+  if (!accessToken || tokenCheck.error) {
     await localStorage.removeItem('access_token');
     const searchParams = new URLSearchParams(window.location.search);
     const code = await searchParams.get('code');
@@ -32,7 +33,10 @@ const checkToken = async (accessToken) => {
   return result;
 };
 
-if (window.location.href.startsWith('http://localhost')) {
+export const getEvents = async () => {
+  NProgress.start();
+
+  if (window.location.href.startsWith('http://localhost')) {
     NProgress.done();
     return mockData;
   }
@@ -53,8 +57,8 @@ if (window.location.href.startsWith('http://localhost')) {
     }
     NProgress.done();
     return result.data.events;
-  };
-
+  }
+};
 
 const removeQuery = () => {
   if (window.history.pushState && window.location.pathname) {
@@ -90,18 +94,10 @@ const getToken = async (code) => {
   }
 };
 
-
-/*
-This function takes an events array, then uses map to create a new array with only locations.
-It will also remove all duplicates by creating another new array using the spread operator and spreading a Set.
-The Set will remove all duplicates from the array.
-*/
 export const extractLocations = (events) => {
-    var extractLocations = events.map((event) => event.location);
-    var locations = [...new Set(extractLocations)];
-    return locations;
+  var extractLocations = events.map((event) => event.location);
+  var locations = [...new Set(extractLocations)];
+  return locations;
 };
 
-export const getEvents = async () => {
-    return mockData;
-};
+
