@@ -27,7 +27,6 @@ export class Event extends Component {
               >
                 View on Google Calendar
               </a>
-              <p className="event-description">{event.description}</p>
             </>
           )}
           {!this.state.show ? (
