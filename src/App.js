@@ -5,6 +5,7 @@ import CitySearch from './CitySearch';
 import EventList from './EventList';
 import NumberOfEvents from './NumberOfEvents';
 import { getEvents, extractLocations, checkToken, getAccessToken } from './api';
+import { OfflineAlert } from './Alert';
 import WelcomeScreen from './WelcomeScreen'
 
 class App extends React.Component {
@@ -14,14 +15,23 @@ class App extends React.Component {
     showWelcomeScreen: undefined
   }
 
-  componentDidMount() {
+  async componentDidMount() {
     this.mounted = true;
-    getEvents().then((events) => {
-      if (this.mounted) {
-        this.setState({ events, locations: extractLocations(events) });
-      }
-    });
-  }
+const accessToken = localStorage.getItem('access_token');
+const isTokenValid = (await checkToken(accessToken)).error ? false :
+true;
+const searchParams = new URLSearchParams(window.location.search);
+const code = searchParams.get("code");
+this.setState({ showWelcomeScreen: !(code || isTokenValid) });
+if ((code || isTokenValid) && this.mounted) {
+getEvents().then((events) => {
+if (this.mounted) {
+this.setState({ events, locations: extractLocations(events) });
+}
+});
+}
+}
+
 
   componentWillUnmount(){
     this.mounted = false;
@@ -59,6 +69,15 @@ class App extends React.Component {
    
     return (
       <div className="App">
+        <WelcomeScreen
+          showWelcomeScreen={this.state.showWelcomeScreen}
+          getAccessToken={() => {
+            getAccessToken();
+          }}
+        />
+        {!navigator.onLine && (
+          <OfflineAlert text={"You are currently offline!"} />
+        )}
         <h1>Meet App</h1>
         <h3>Choose your nearest city</h3>
           <CitySearch updateEvents={this.updateEvents} locations={this.state.locations} />
