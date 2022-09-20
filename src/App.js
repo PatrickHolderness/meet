@@ -4,13 +4,14 @@ import './nprogress.css';
 import CitySearch from './CitySearch';
 import EventList from './EventList';
 import NumberOfEvents from './NumberOfEvents';
-import { getEvents, extractLocations } from './api'
-
+import { getEvents, extractLocations, checkToken, getAccessToken } from './api';
+import WelcomeScreen from './WelcomeScreen'
 
 class App extends React.Component {
   state = {
     events: [],
-    locations: []
+    locations: [],
+    showWelcomeScreen: undefined
   }
 
   componentDidMount() {
@@ -53,6 +54,9 @@ class App extends React.Component {
 
   render() {
 
+    if (this.state.showWelcomeScreen === undefined) return <div
+    className="App" />
+   
     return (
       <div className="App">
         <h1>Meet App</h1>
