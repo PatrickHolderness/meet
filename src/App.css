@@ -35,6 +35,20 @@
     align-self: center;
     height: 38px;
   }
+
+  .alert {
+    font-size: 14px;
+    margin: 50px;
+}
+
+.info-alert {
+  position: absolute;
+    margin-top: 100px;
+}
+
+.error-alert {
+    margin-top: 20px
+}
   
   .city {
     width: 250px;
