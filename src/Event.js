@@ -32,14 +32,14 @@ export class Event extends Component {
           )}
           {!this.state.show ? (
             <button
-              className="event-showDetails-btn"
+              className="event-Details-btn"
               onClick={this.toggleEventDetails}
             >
                Show Details
             </button>
           ) : (
             <button
-              className="event-hideDetails-btn"
+              className="event-Details-btn"
               onClick={this.toggleEventDetails}
             >
               Hide Details

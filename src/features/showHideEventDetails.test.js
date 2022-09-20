@@ -35,7 +35,7 @@ defineFeature(feature, test => {
         });
 
         when('the user clicks on that event', () => {
-            EventWrapper.find('.event-showDetails-btn').simulate('click');
+            EventWrapper.find('.details-button').simulate('click');
         });
 
         then('more details about that event should be shown', () => {
@@ -54,7 +54,7 @@ defineFeature(feature, test => {
         });
 
         when('the user clicks on that event', () => {
-            EventWrapper.find('.event-showDetails-btn').simulate('click');
+            EventWrapper.find('.details-button').simulate('click');
         });
 
         then('the details should be hidden', () => {

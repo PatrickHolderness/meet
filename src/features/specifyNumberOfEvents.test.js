@@ -1,6 +1,7 @@
 import { mount } from 'enzyme';
 import { loadFeature, defineFeature } from 'jest-cucumber';
 import App from '../App';
+import NumberOfEvents from '../NumberOfEvents';
 
 const feature = loadFeature('./src/features/specifyNumberOfEvents.feature');
 
@@ -22,7 +23,7 @@ defineFeature(feature, (test) => {
 
     then('the user should see a default number which is 32', () => {
       AppWrapper.update();
-      expect(AppWrapper.state('numberOfEvents')).toBe(32);
+      expect(AppWrapper.state('numberOfEvents')).toEqual(32);
     });
   });
 
@@ -55,9 +56,8 @@ defineFeature(feature, (test) => {
       }
     );
 
-    then(
-      'the user should see a six in the input field and user should only see a six events in the page',
-      () => {
+    then('the user should see a six in the input field and six events displayed.', () => {
+
         expect(AppWrapper.state('numberOfEvents')).toBe(6);
       }
     );
