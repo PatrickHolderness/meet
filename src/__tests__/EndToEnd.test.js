@@ -1,17 +1,21 @@
 import puppeteer from 'puppeteer';
 
+beforeAll(async () => {
+    jest.setTimeout(30000);
+});
 describe('show/hide an event details', () => {
-    jest.setTimeout(60000);
+    
     let browser;
     let page;
+
     beforeAll(async () => {
         browser = await puppeteer.launch({
-            headless: true,
+            headless: false,
             slowMo: 250, // slow down by 250ms
             ignoreDefaultArgs: ['--disable-extensions'] // ignores default setting that causes timeout errors*/
         });
         page = await browser.newPage();
-        await page.goto('http://localhost:3000/meet', {waitUntil: 'networkidle2'});
+        await page.goto('http://localhost:3000/',);
         await page.waitForSelector('.event');
     });
 
@@ -20,19 +24,19 @@ describe('show/hide an event details', () => {
     });
 
     test('An event element is collapsed by default', async () => {
-        const eventDetails = await page.$('.event .event-description');
+        const eventDetails = await page.$('.event .event__Details');
         expect(eventDetails).toBeNull();
     });
 
     test('User can expand an event to see its details', async () => {
-        await page.click('.event .event-Details-btn');
-        const eventDetails = await page.$('.event .event-description');
+        await page.click('.event .event-details-button');
+        const eventDetails = await page.$('.event .event__Details');
         expect(eventDetails).toBeDefined();
     });
 
     test('User can collapse an event to hide its details', async () => {
-        await page.click('.event .event-Details-btn');
-        const eventDetails = await page.$('.event .event-description');
+        await page.click('.event .event-details-button');
+        const eventDetails = await page.$('.event .event__Details');
         expect(eventDetails).toBeNull();
     });
 });

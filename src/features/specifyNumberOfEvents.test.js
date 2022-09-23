@@ -57,8 +57,8 @@ defineFeature(feature, (test) => {
     );
 
     then('the user should see a six in the input field and six events displayed.', () => {
-
-        expect(AppWrapper.state('numberOfEvents')).toBe(6);
+      let NumberOfEventsWrapper = AppWrapper.find('NumberOfEvents');
+        expect(NumberOfEventsWrapper.state('numberOfEvents')).toBe(6);
       }
     );
   });

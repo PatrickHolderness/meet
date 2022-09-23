@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { ErrorAlert } from './Alert';
 
-class NumberOfEvents extends Component {
+export class NumberOfEvents extends Component {
 
   state = {
     numberOfEvents: 32,
@@ -35,7 +35,7 @@ render() {
       <input
         type="number"
         id="default"
-        className="default"
+        className="number-input"
         value={this.state.numberOfEvents}
         onChange={this.handleInputChanged}
       />

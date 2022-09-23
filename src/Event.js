@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 
-export class Event extends Component {
+ class Event extends Component {
   toggleEventDetails = () => {
     this.setState({ show: !this.state.show });
   };
   state = { show: false };
+  
   render() {
     const { event } = this.props;
     return (
@@ -31,14 +32,14 @@ export class Event extends Component {
           )}
           {!this.state.show ? (
             <button
-              className="event-Details-btn"
+              className="details-button"
               onClick={this.toggleEventDetails}
             >
                Show Details
             </button>
           ) : (
             <button
-              className="event-Details-btn"
+              className="details-button"
               onClick={this.toggleEventDetails}
             >
               Hide Details
