@@ -4,7 +4,7 @@ import EventList from "./EventList";
 import CitySearch from "./CitySearch";
 import NumberOfEvents from "./NumberOfEvents";
 import { extractLocations, getEvents, checkToken, getAccessToken } from "./api";
-import { OffLineAlert } from "./Alert";
+import { OfflineAlert } from "./Alert";
 import "./nprogress.css";
 import WelcomeScreen from "./WelcomeScreen";
 class App extends Component {
@@ -70,7 +70,7 @@ class App extends Component {
         />
         
         {!navigator.onLine && (
-          <OffLineAlert text={"You are currently offline!"} />
+          <OfflineAlert text={"You are currently offline!"} />
         )}
 
         <h1>Come and see what's going on</h1>
