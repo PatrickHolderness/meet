@@ -7,24 +7,16 @@ import NumberOfEvents from "../NumberOfEvents";
 import { mockData } from "../mock-data";
 import { extractLocations, getEvents } from "../api"; // i-3
 
+//UNIT TESTS//
 describe("<App /> component", () => {
   let AppWrapper;
-  beforeAll(() => {
-    AppWrapper = shallow(<App />);
-  });
-
-  test("render list of events", () => {
-    expect(AppWrapper.find(EventList)).toHaveLength(1);
-  });
-
-  test("render CitySearch", () => {
-    expect(AppWrapper.find(CitySearch)).toHaveLength(1);
-  });
-
-  test("render number of events", () => {
-    expect(AppWrapper.find(NumberOfEvents)).toHaveLength(1);
-  });
+    beforeAll(() => {AppWrapper = shallow(<App />)});
+  
+    test('render list of events', () => {expect(AppWrapper.find(EventList)).toHaveLength(1)});   
+    test('render CitySearch', ()     => {expect(AppWrapper.find(CitySearch)).toHaveLength(1)});
+    test('render NumberOfEvents', () => {expect(AppWrapper.find(NumberOfEvents)).toHaveLength(1)});
 });
+
 
 describe("<App /> integration", () => {
   test('App passes "events" state as a prop to EventList', () => {

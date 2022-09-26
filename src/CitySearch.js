@@ -3,17 +3,23 @@ import { InfoAlert } from './Alert';
 
 class CitySearch extends Component {
   state = {
-    query: "",
+    query: '',
     suggestions: [],
-    showSuggestions: false, 
+    showSuggestions: undefined, 
   };
 
   //Event handler for input
   handleInputChanged = (event) => {
     const value = event.target.value;
+    this.setState({ showSuggestions: true });
     const suggestions = this.props.locations.filter((location) => {
       return location.toUpperCase().indexOf(value.toUpperCase()) > -1;
     });
+    this.setState({
+      query: value,
+      suggestions,
+  });
+
 
     if (suggestions.length === 0 ) {
       this.setState({
@@ -47,19 +53,23 @@ class CitySearch extends Component {
         <InfoAlert text={this.state.infoText} />
         <input
           type="text"
+          id="city"
+          placeholder="Select city:"
           className="city"
           value={this.state.query}
           onChange={this.handleInputChanged}
           onFocus={() => { this.setState({ showSuggestions: true });
          }}
         />
-        <ul className="suggestions" style={this.state.showSuggestions ? {} : { display: 'none' }}>
+        <ul className="suggestions" style={this.state.showSuggestions
+          ? {} 
+          : { display: 'none' }}>
           
           {this.state.suggestions.map((suggestion) => (
             <li
+            className="suggestions-item"
              key={suggestion}
-             onClick={() => this.handleItemClicked(suggestion)}
-             >{suggestion}
+             onClick={() => this.handleItemClicked(suggestion)}>{suggestion}
              </li>
           ))}
           <li className="suggestions-all"
