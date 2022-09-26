@@ -61,13 +61,14 @@ class App extends Component {
       return <div className="App" />;
     return (
       <div className="App">
-        <div className="navbar"></div>
+        <div className="navbar">
         <WelcomeScreen
           showWelcomeScreen={this.state.showWelcomeScreen}
           getAccessToken={() => {
             getAccessToken();
           }}
         />
+        </div>
         
         {!navigator.onLine && (
           <OfflineAlert text={"You are currently offline!"} />
