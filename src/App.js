@@ -86,7 +86,7 @@ class App extends Component {
 
     return (
       <div className="App">
-         <div className="navbar"> 
+        <div className="navbar"> 
         <WelcomeScreen
           showWelcomeScreen={this.state.showWelcomeScreen}
           getAccessToken={() => {
