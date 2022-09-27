@@ -86,7 +86,7 @@ class App extends Component {
 
     return (
       <div className="App">
-        <div className="navbar">
+         <div className="navbar"> 
         <WelcomeScreen
           showWelcomeScreen={this.state.showWelcomeScreen}
           getAccessToken={() => {
@@ -105,10 +105,7 @@ class App extends Component {
           locations={this.state.locations}
           updateEvents={this.updateEvents}
         />
-        <NumberOfEvents
-          events={this.state.events}
-          updateEvents={this.updateEvents}
-        />
+        
         <div className="data-vis-wrapper">
           <div className="pie-wrapper">
             <EventGenre events={this.state.events} />
@@ -140,11 +137,12 @@ class App extends Component {
             </ResponsiveContainer>
           </div>
         </div>
+        <EventList events={this.state.events} />
+
         <NumberOfEvents
           events={this.state.events}
           updateEvents={this.updateEvents}
         />
-        <EventList events={this.state.events} />
       </div>
     );
   }
