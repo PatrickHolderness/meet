@@ -1,6 +1,19 @@
 @import url(https://fonts.googleapis.com/css?family=Roboto:500);
 
-body {
+.flex-container {
+  /* We first create a flex layout context */
+  display: flex;
+  
+  /* Then we define the flow direction 
+     and if we allow the items to wrap 
+   * Remember this is the same as:
+   * flex-direction: row;
+   * flex-wrap: wrap;
+   */
+  flex-flow: row wrap;
+}
+
+  body {
   background-color: 'white';
   background-size: cover;
   background-repeat: no-repeat;
@@ -25,7 +38,9 @@ body {
     margin-left: 2%;
     margin-right: 2%;
 }
-
+.h3 {
+  font-size: 20px;
+}
   ul {
     padding: 0;
     list-style: none;
@@ -130,7 +145,7 @@ body {
     margin-bottom: 10px;
     text-align: left;
     border: 2px solid; 
-    border-radius: 1px;
+    border-radius: 14px;
     max-width: 500px;
     position: relative;
     transition: all 0.25s;
@@ -154,7 +169,7 @@ body {
     font-family: 'Maven Pro', sans-serif;
     font-weight: 400;
     margin-bottom: 10px;
-    font-size: 20px;
+    font-size: 18px;
 }
 
 .event-details {
@@ -286,7 +301,7 @@ body {
     }
 
     @media all and (max-width: 1800px) {
-      .event-list {
+      .eventlist {
           grid-template-columns: 1fr 1fr 1fr;
       }
   }
@@ -297,13 +312,13 @@ body {
           grid-template-columns: 1fr;
       }
   
-      .event-list {
+      .eventlist {
           grid-template-columns: 1fr 1fr;
       }
   }
   
   @media all and (max-width: 700px) {
-      .event-list {
+      .eventlist {
           grid-template-columns: 1fr;
       }
   }
