@@ -6,7 +6,7 @@ function WelcomeScreen(props) {
     return props.showWelcomeScreen ?
         (
             <div className="WelcomeScreen">
-                <h1>Welcome to Meetup</h1>
+                <h1>Welcome to Meet</h1>
                 <h3>
                     Log in to see upcoming events for full-stack developers in cities around the world
                 </h3>

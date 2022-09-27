@@ -1,13 +1,30 @@
 @import url(https://fonts.googleapis.com/css?family=Roboto:500);
+
+body {
+  background-color: 'white';
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background-position: 75%;
+  color: #283618;
+}
+
 .App {
+  padding: 2% 5%;
   text-align: center;
   display: block;
   padding: 2% 2%;
+  font-size: 16px;
 }
 
 .App * {
     box-sizing: border-box;
   }
+
+  .content-container {
+    margin-left: 2%;
+    margin-right: 2%;
+}
 
   ul {
     padding: 0;
@@ -44,11 +61,20 @@
 
 .info-alert {
   position: absolute;
-    margin-top: 100px;
+  bottom: 42px;
+  margin-left: 20px;
 }
 
 .error-alert {
-    margin-top: 20px
+  margin-bottom: 10px;
+  margin-left: -30px;
+}
+
+.offline-alert {
+  width: 400px;
+  margin: 0 auto;
+  font-size: 20px;
+  font-weight: 500;
 }
   
   .city {
@@ -90,15 +116,52 @@
     background-color: #bcdcdb;
   }
   
+  .event-list {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 50px;
+    margin-top: 60px;
+    justify-content: space-evenly;
+}
+
   .event {
-    padding: 10px 10px 35px;
+    padding: 10px 30px 35px;
+    border-radius: 10px;
     margin-bottom: 10px;
     text-align: left;
-    border: 1px solid #ccc;
-    border-radius: 4px;
+    border: 2px solid; 
+    border-radius: 1px;
+    max-width: 500px;
     position: relative;
+    transition: all 0.25s;
+    background-color:rgb(255, 255, 255);
+    box-shadow: rgba(0, 0, 0, 0.25)
   }
   
+  .event-title {
+    text-align: center;
+    margin-bottom: 15px;
+}
+
+.event-info {
+    margin-bottom: 26px;
+    font-size: 18px;
+    font-weight: 500;
+    text-align: center;
+}
+
+.event-info_location {
+    font-family: 'Maven Pro', sans-serif;
+    font-weight: 400;
+    margin-bottom: 10px;
+    font-size: 20px;
+}
+
+.event-details {
+    overflow-x: hidden;
+    margin-bottom: 26px;
+}
+
   .details-btn {
     position: absolute;
     right: 5px;
@@ -142,10 +205,7 @@
     font-family: sans-serif;
   }
   
-  .Alert {
-    position: fixed;
-    top: 20px;
-  }
+
   
   .data-vis-wrapper {
     display: flex;
@@ -222,5 +282,29 @@
         min-width: auto;
         margin: 0 auto;
       }
+
     }
+
+    @media all and (max-width: 1800px) {
+      .event-list {
+          grid-template-columns: 1fr 1fr 1fr;
+      }
+  }
+  
+  @media all and (max-width: 1200px) {
+      .visualized-data {
+          display: grid;
+          grid-template-columns: 1fr;
+      }
+  
+      .event-list {
+          grid-template-columns: 1fr 1fr;
+      }
+  }
+  
+  @media all and (max-width: 700px) {
+      .event-list {
+          grid-template-columns: 1fr;
+      }
+  }
 

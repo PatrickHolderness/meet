@@ -1,5 +1,4 @@
 import React from 'react';
-
 import {
     BarChart,
     Bar,
@@ -8,7 +7,8 @@ import {
     XAxis,
     YAxis,
     Tooltip, 
-    ResponsiveContainer
+    ResponsiveContainer,
+    CartesianGrid
 } from 'recharts';
 
 import EventList from './EventList';
@@ -66,7 +66,7 @@ class App extends React.Component {
             const value = events.filter((event) => event.summary.includes(genre)).length;
             return { "name": genre, value };
         });
-        return data.filter(item => item.value > 0); // filter out genres not in current data set
+        return data.filter(item => item.value > 0); 
     };
 
     constructor() {
@@ -92,17 +92,18 @@ class App extends React.Component {
                     <OfflineAlert text={offlineText} />
                     <div className="app-header">
                         <h1 className="app-title">Welcome to Meetup</h1>
-                        <h2 className="app-subtitle">Enter location below: </h2>
+                        <h2 className="app-subtitle">Find events in your city: </h2>
                     </div>
                     <CitySearch updateEvents={this.updateEvents} locations={locations} />
                     <NumberOfEvents numberOfEvents={numberOfEvents} updateEvents={this.updateEvents} />
                     <div className="visualized-data">
                         <div className="pie-chart">
-                            <h4>Genre distribution</h4>
+                            <h4>Distribution of event type</h4>
                             <ResponsiveContainer height={400} width="99%">
                                 <PieChart>
                                     <Pie data={this.getPieData()} dataKey="value" cx="50%" cy="50%"
-                                        outerRadius="50%" labelLine={false} fill="#283618"
+                                        innerRadius={50}
+                                        outerRadius={100} labelLine={false} fill="#6F7EFE"
                                         label={({ name }) => `${name}`} />
                                 </PieChart>
                             </ResponsiveContainer>
@@ -110,11 +111,12 @@ class App extends React.Component {
                         <div className="bar-chart">
                             <h4>Event distribution by city</h4>
                             <ResponsiveContainer height={400} width="99%">
-                                <BarChart margin={{ top: 20, right: 20, bottom: 20, left: 20 }} data={this.getBarData()} layout="vertical" barCategoryGap={3}>
-                                    <XAxis type="number" />
-                                    <YAxis type="category" name="city" dataKey="city" tick={{ fontSize: '13px', fill: "#283618" }} width={100} />
-                                    <Tooltip />
-                                    <Bar dataKey="number" fill="#283618" />
+                                <BarChart margin={{ top: 0,right: 0, left: 0, bottom: 15 }} data={this.getBarData()} layout="vertical" barCategoryGap={3}>
+                                  <CartesianGrid strokeDasharray="3 3" />
+                                  <XAxis type="number" />
+                                  <YAxis type="category" name="city" dataKey="city" tick={{ fontSize: '12px', fill: "#6F7EFE" }} width={100} />
+                                  <Tooltip />
+                                  <Bar label="true" dataKey="number" fill="#6F7EFE" />
                                 </BarChart>
                             </ResponsiveContainer>
                         </div>
@@ -154,7 +156,7 @@ class App extends React.Component {
 
         if (!navigator.onLine) {
             this.setState({
-                offlineText: "You're offline! Using data from your last visit...",
+                offlineText: "You're offline. You will see cached events until you reconnect...",
             });
         } else {
             this.setState({
