@@ -111,7 +111,7 @@ class App extends Component {
             <EventGenre events={this.state.events} />
             </div>
           <div className="scatter-wrapper">
-            <ResponsiveContainer>
+            <ResponsiveContainer width="100%" height={400}>
               <ScatterChart
                 width={400}
                 height={400}
