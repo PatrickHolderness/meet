@@ -131,7 +131,7 @@
     background-color: #bcdcdb;
   }
   
-  .eventlist {
+  .event-list {
     display: grid;
     grid-template-columns: 1fr 1fr 1fr 1fr;
     gap: 50px;
@@ -139,19 +139,23 @@
     justify-content: space-evenly;
 }
 
-  .event {
+/**/
+
+/* Event */
+.event {
     padding: 10px 30px 35px;
-    border-radius: 10px;
-    margin-bottom: 10px;
     text-align: left;
-    border: 2px solid; 
-    border-radius: 14px;
-    max-width: 500px;
+    border-radius: 16px;
     position: relative;
-    transition: all 0.25s;
-    background-color:rgb(255, 255, 255);
-    box-shadow: rgba(0, 0, 0, 0.25)
-  }
+    max-width: 600px;
+    background-color:
+        /*#ccd5ae*/
+        'white';
+    /*box-shadow: rgba(163, 171, 138, 1) 0px 3px 6px, rgba(163, 171, 138, 1) 0px 3px 6px;*/
+    box-shadow: rgba(0, 0, 0, 0.1) 0px 50px 50px -20px, rgba(0, 0, 0, 0.2) 0px 30px 60px -30px, rgb(0, 0, 0, 0.3) 0px -2px 6px 0px inset;
+    transition: all 0.5s;
+}
+
   
   .event-title {
     text-align: center;
