@@ -314,9 +314,6 @@
           grid-template-columns: 1fr;
       }
   
-      .eventlist {
-          grid-template-columns: 1fr 1fr;
-      }
   }
   
   @media all and (max-width: 700px) {

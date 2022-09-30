@@ -129,8 +129,6 @@ class App extends React.Component {
         );
     }
 
-
-
     async componentDidMount() {
         this.mounted = true;
         const accessToken = localStorage.getItem('access_token');
@@ -169,6 +167,5 @@ class App extends React.Component {
         this.mounted = false;
     }
 }
-
 
 export default App;
