@@ -1,4 +1,8 @@
-# meet
+# Meet
+
+![Meet screenshot](https://user-images.githubusercontent.com/104070642/200294892-f0800594-a05e-4f00-80fa-dc711d88c203.png)
+![Meet screenshot 2](https://user-images.githubusercontent.com/104070642/200294917-ade88fce-1648-47c7-b0a1-c0d2a57c0702.png)
+
 
 ## Goal  
 To build a serverless, progressive web application (PWA) with React using a test-driven
@@ -17,7 +21,7 @@ upcoming events.
 
 ## Test Scenarios
 
-### FEATURE 1: FILTER EVENTS BY CITY
+### Feature 1: Filter events by city
 
 As a user, I should be able to see events taking place in whichever city I choose, so that I can see a list of events in that city.
 
@@ -42,7 +46,7 @@ And: the user should receive a list of upcoming events in that city
 ```
 
 
-### FEATURE 2: SHOW/HIDE AN EVENT'S DETAILS
+### Feature 2: show/hide an events details
 
 As a user, I should be able to have the option to display and hide (collapse) event details, so I can control how much information and how many events I see.
 
@@ -67,7 +71,7 @@ Then: the details are hidden
 ```
 
 
-FEATURE 3: SPECIFY NUMBER OF EVENTS
+### FEATURE 3: Specify number of events
 
 As a user, I should be able to control how many events I see, so that I can effectively filter information.
 
@@ -86,7 +90,7 @@ Then: the default number of results will be changed to what the users select
 
 
 
-### FEATURE 4: USE APP WHEN OFFLINE
+### Feature 4: use app when offline
 
 As a user, I should be able to access event information while offline, so that I can view event information in every situation.
 
@@ -106,7 +110,7 @@ When: They want to change settings (city, time, range)
 
 Then: An error message is displayed
 
-### FEATURE 5: DATA VISUALISATION
+### Feature 5: Data Visualisation
 
 As a user, I should be able to see charts and other forms of visualisation, showing the number of upcoming events in my city, so that I am as aware as possible of any events that might be of interest to me.
 
