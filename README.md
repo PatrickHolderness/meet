@@ -71,7 +71,7 @@ Then: the details are hidden
 ```
 
 
-### FEATURE 3: Specify number of events
+### Feature 3: Specify number of events
 
 As a user, I should be able to control how many events I see, so that I can effectively filter information.
 
