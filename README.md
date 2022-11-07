@@ -94,22 +94,18 @@ Then: the default number of results will be changed to what the users select
 
 As a user, I should be able to access event information while offline, so that I can view event information in every situation.
 
-Scenario 1: Show cached data while offline
-
-Given: User has no internet and would like to access the site
-
-When: They access the site offline
-
-Then: Cached data is accessible
-
-Scenario 2: Show error if user tries to change settings while offline
-
-Given: The user is viewing an offline, cached version of the site
-
-When: They want to change settings (city, time, range)
-
-Then: An error message is displayed
-
+**Scenario 1:** Show cached data when there’s no internet connection. 
+```
+Given: the app has no internet connection
+When: the data is cached
+Then: that data will be shown
+```
+**Scenario 2:** Show error when user changes the settings (city, time range). 
+```
+Given: the user opened the settings tab
+When: the user changes the settings 
+Then: an error message will be displayed
+```
 ### Feature 5: Data Visualisation
 
 As a user, I should be able to see charts and other forms of visualisation, showing the number of upcoming events in my city, so that I am as aware as possible of any events that might be of interest to me.
