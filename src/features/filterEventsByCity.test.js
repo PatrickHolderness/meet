@@ -72,7 +72,8 @@ defineFeature(feature, (test) => {
       expect(AppWrapper.find('.suggestions li')).toHaveLength(2);
     });
 
-    when('the user selects a city (e.g., “Berlin, Germany”) from the list',
+    when(
+      'the user selects a city (e.g., “Berlin, Germany”) from the list',
       () => {
         AppWrapper.find('.suggestions li').at(0).simulate('click');
       }
