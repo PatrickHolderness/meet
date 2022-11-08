@@ -8,7 +8,7 @@ import { extractLocations } from '../api';
 const feature = loadFeature('./src/features/filterEventsByCity.feature');
 
 defineFeature(feature, (test) => {
-  test('When user hasn’t searched for a city, show upcoming events from all cities', ({
+  test('When user hasn’t searched for a city, show upcoming events from all cities.', ({
     given,
     when,
     then
@@ -16,11 +16,11 @@ defineFeature(feature, (test) => {
     given('user hasn’t searched for any city', () => {});
 
     let AppWrapper;
-    when('the user starts the app', () => {
+    when('the user opens the app', () => {
       AppWrapper = mount(<App />);
     });
 
-    then('the user should see a list of all upcoming events', () => {
+    then('the user should see the list of upcoming events.', () => {
       AppWrapper.update();
       expect(AppWrapper.find('.event')).toHaveLength(mockData.length);
     });
@@ -72,7 +72,8 @@ defineFeature(feature, (test) => {
       expect(AppWrapper.find('.suggestions li')).toHaveLength(2);
     });
 
-    when('the user selects a city (e.g., “Berlin, Germany”) from the list',
+    when(
+      'the user selects a city (e.g., “Berlin, Germany”) from the list',
       () => {
         AppWrapper.find('.suggestions li').at(0).simulate('click');
       }

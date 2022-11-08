@@ -1,18 +1,13 @@
-import React from 'react';
+import React, { Component } from 'react';
+import { extractLocations, getEvents } from './api';
 import './App.css';
-import './nprogress.css';
 import CitySearch from './CitySearch';
 import EventList from './EventList';
 import NumberOfEvents from './NumberOfEvents';
-import { getEvents, extractLocations } from './api'
+import './nprogress.css';
 
-
-class App extends React.Component {
-  state = {
-    events: [],
-    locations: []
-  }
-
+class App extends Component {
+  // componentDidMount
   componentDidMount() {
     this.mounted = true;
     getEvents().then((events) => {
@@ -22,12 +17,12 @@ class App extends React.Component {
     });
   }
 
-  componentWillUnmount(){
+  //componentWillUnmount
+  componentWillUnmount() {
     this.mounted = false;
   }
 
-
-
+  // update events
   updateEvents = (location, eventCount) => {
     if (location === undefined) {
       location = this.state.seletedLocation;
@@ -49,18 +44,29 @@ class App extends React.Component {
     });
   };
 
-
+  //states
+  state = {
+    events: [],
+    locations: [],
+    numberOfEvents: 32,
+    seletedLocation: 'all'
+  };
 
   render() {
-
     return (
       <div className="App">
-          <CitySearch updateEvents={this.updateEvents} locations={this.state.locations} />
-          <NumberOfEvents updateEvents={this.updateEvents} />
-          <EventList events={this.state.events} />
+        <CitySearch
+          locations={this.state.locations}
+          updateEvents={this.updateEvents}
+        />
+        <NumberOfEvents
+          numberOfEvents={this.state.numberOfEvents}
+          updateEvents={this.updateEvents}
+        />
+        <EventList events={this.state.events} />
       </div>
-  );
-}
+    );
+  }
 }
 
 export default App;

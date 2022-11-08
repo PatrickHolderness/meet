@@ -4,12 +4,13 @@ export class Event extends Component {
   toggleEventDetails = () => {
     this.setState({ show: !this.state.show });
   };
+
   state = { show: false };
+
   render() {
     const { event } = this.props;
     return (
       <>
-        
         <div className="event">
           <h1 className="event-summary-title">{event.summary}</h1>
           <p className="event-info">
@@ -18,28 +19,27 @@ export class Event extends Component {
           {this.state.show && (
             <>
               <h2 className="event-about-title">About event:</h2>
-              <p className="event-description">{event.description}</p>
               <a
                 href={event.htmlLink}
                 target="_blank"
                 rel="noreferrer"
                 className="event-htmlLink"
               >
-                View on Google Calendar
+                See details on Google Calendar
               </a>
               <p className="event-description">{event.description}</p>
             </>
           )}
           {!this.state.show ? (
             <button
-              className="event-Details-btn"
+              className="event-showDetails-btn"
               onClick={this.toggleEventDetails}
             >
-               Show Details
+              Show Details
             </button>
           ) : (
             <button
-              className="event-Details-btn"
+              className="event-hideDetails-btn"
               onClick={this.toggleEventDetails}
             >
               Hide Details
@@ -50,4 +50,5 @@ export class Event extends Component {
     );
   }
 }
+
 export default Event;

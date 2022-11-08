@@ -1,5 +1,6 @@
 //imports
 import { mockData } from './mock-data';
+
 import axios from 'axios';
 import NProgress from 'nprogress';
 
@@ -14,7 +15,7 @@ export const getAccessToken = async () => {
     const code = await searchParams.get('code');
     if (!code) {
       const results = await axios.get(
-        'https://ry4bqnote1.execute-api.eu-central-1.amazonaws.com/dev/api/get-auth-url'
+        'https://mqt1i72yx1.execute-api.us-east-1.amazonaws.com/dev/api/get-auth-url'
       );
       const { authUrl } = results.data;
       return (window.location.href = authUrl);
@@ -46,7 +47,7 @@ export const getEvents = async () => {
   if (token) {
     removeQuery();
     const url =
-      'https://ry4bqnote1.execute-api.eu-central-1.amazonaws.com/dev/api/get-events' +
+      'https://mqt1i72yx1.execute-api.us-east-1.amazonaws.com/dev/api/get-events' +
       '/' +
       token;
     const result = await axios.get(url);
@@ -74,13 +75,30 @@ const removeQuery = () => {
   }
 };
 
+// const getToken = async (code) => {
+//   const encodeCode = encodeURIComponent(code);
+//   const { access_token } = await fetch(
+//     'https://mqt1i72yx1.execute-api.us-east-1.amazonaws.com/dev/api/token' +
+//       '/' +
+//       encodeCode
+//   )
+//     .then((res) => {
+//       return res.json();
+//     })
+//     .catch((error) => error);
 
+//   access_token && localStorage.setItem('access_token', access_token);
+
+//   return access_token;
+// };
+
+//getToken with try..catch statements
 const getToken = async (code) => {
   try {
     const encodeCode = encodeURIComponent(code);
 
     const response = await fetch(
-      'https://ry4bqnote1.execute-api.eu-central-1.amazonaws.com/dev/api/token' +
+      'https://mqt1i72yx1.execute-api.us-east-1.amazonaws.com/dev/api/token' +
         '/' +
         encodeCode
     );
@@ -94,10 +112,20 @@ const getToken = async (code) => {
   }
 };
 
+/**
+ *
+ * @param {*} events:
+ * This function takes an events array, then uses map to create a new array with only locations.
+ * It will also remove all duplicates by creating another new array using the spread operator and spreading a Set.
+ * The Set will remove all duplicates from the array.
+ */
+
 export const extractLocations = (events) => {
   let extractLocations = events.map((event) => event.location);
   let locations = [...new Set(extractLocations)];
   return locations;
 };
 
-
+// export const getEvents = async () => {
+//   return mockData;
+// };
